@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "1058945453489",
+    "firebase_url": "https://rideshareshawnhannah-default-rtdb.firebaseio.com",
+    "project_id": "rideshareshawnhannah",
+    "storage_bucket": "rideshareshawnhannah.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1058945453489:android:578294bffd8a8793c10190",
+        "android_client_info": {
+          "package_name": "edu.uga.cs.rideshareshawnhannah"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBgVL0qUbnMuGvk7wV-P_vj-W-15lZywJk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
