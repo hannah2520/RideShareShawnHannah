@@ -29,7 +29,9 @@
         <activity android:name=".InitialActivity" />
         <activity android:name=".PostRideActivity" />
         <activity android:name=".PostRequestActivity" />
-
+        <activity android:name=".RideOffersActivity" />
+        <activity android:name=".RideRequestsActivity" />
+        <activity android:name=".ManageRidesActivity" />
 
 
     </application>

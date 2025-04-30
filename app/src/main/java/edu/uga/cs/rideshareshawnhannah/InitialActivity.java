@@ -9,7 +9,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class InitialActivity extends AppCompatActivity {
 
-    private Button buttonViewRides, buttonLogout, buttonPostRide, buttonPostRequest;
+    private Button buttonViewRideOffers, buttonViewRideRequests, buttonLogout, buttonPostRide, buttonPostRequest, buttonManageRides;
     private FirebaseAuth mAuth;
 
     @Override
@@ -19,38 +19,31 @@ public class InitialActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
-        buttonViewRides = findViewById(R.id.buttonViewRides);
+        buttonViewRideOffers = findViewById(R.id.buttonViewRideOffers);
+        buttonViewRideRequests = findViewById(R.id.buttonViewRideRequests);
         buttonLogout = findViewById(R.id.buttonLogout);
         buttonPostRide = findViewById(R.id.buttonPostRide);
         buttonPostRequest = findViewById(R.id.buttonPostRequest);
+        buttonManageRides = findViewById(R.id.buttonManageRides); // <--- NEW
 
-        buttonViewRides.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(InitialActivity.this, MainActivity.class));
-            }
-        });
+        buttonViewRideOffers.setOnClickListener(v ->
+                startActivity(new Intent(InitialActivity.this, RideOffersActivity.class)));
 
-        buttonLogout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mAuth.signOut();
-                finish();
-            }
-        });
-        buttonPostRide.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(InitialActivity.this, PostRideActivity.class);
-                startActivity(intent);
-            }
-        });
-        buttonPostRequest.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(InitialActivity.this, PostRequestActivity.class));
-            }
-        });
+        buttonViewRideRequests.setOnClickListener(v ->
+                startActivity(new Intent(InitialActivity.this, RideRequestsActivity.class)));
 
+        buttonPostRide.setOnClickListener(v ->
+                startActivity(new Intent(InitialActivity.this, PostRideActivity.class)));
+
+        buttonPostRequest.setOnClickListener(v ->
+                startActivity(new Intent(InitialActivity.this, PostRequestActivity.class)));
+
+        buttonManageRides.setOnClickListener(v ->
+                startActivity(new Intent(InitialActivity.this, ManageRidesActivity.class))); // <--- NEW
+
+        buttonLogout.setOnClickListener(v -> {
+            mAuth.signOut();
+            finish();
+        });
     }
 }

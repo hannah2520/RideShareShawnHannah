@@ -14,29 +14,35 @@
         android:textSize="24sp"
         android:textAlignment="center"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/buttonViewRides"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintVertical_chainStyle="packed" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
-        android:id="@+id/buttonViewRides"
+        android:id="@+id/buttonViewRideOffers"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="View Rides"
+        android:text="View Ride Offers"
         app:layout_constraintTop_toBottomOf="@id/textViewWelcome"
-        app:layout_constraintBottom_toTopOf="@id/buttonPostRide"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="24dp" />
+
+    <Button
+        android:id="@+id/buttonViewRideRequests"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="View Ride Requests"
+        app:layout_constraintTop_toBottomOf="@id/buttonViewRideOffers"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp" />
 
     <Button
         android:id="@+id/buttonPostRide"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Post a Ride"
-        app:layout_constraintTop_toBottomOf="@id/buttonViewRides"
-        app:layout_constraintBottom_toTopOf="@id/buttonPostRequest"
+        app:layout_constraintTop_toBottomOf="@id/buttonViewRideRequests"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="16dp" />
@@ -47,7 +53,16 @@
         android:layout_height="wrap_content"
         android:text="Post a Ride Request"
         app:layout_constraintTop_toBottomOf="@id/buttonPostRide"
-        app:layout_constraintBottom_toTopOf="@id/buttonLogout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp" />
+
+    <Button
+        android:id="@+id/buttonManageRides"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Manage Rides"
+        app:layout_constraintTop_toBottomOf="@id/buttonPostRequest"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="16dp" />
@@ -57,7 +72,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Log Out"
-        app:layout_constraintTop_toBottomOf="@id/buttonPostRequest"
+        app:layout_constraintTop_toBottomOf="@id/buttonManageRides"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
