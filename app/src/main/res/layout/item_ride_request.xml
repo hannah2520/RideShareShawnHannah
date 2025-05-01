@@ -3,53 +3,80 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="12dp"
+    android:layout_margin="16dp"
+    app:cardCornerRadius="16dp"
     app:cardElevation="4dp"
-    app:cardCornerRadius="8dp"
-    android:padding="16dp">
+    app:cardBackgroundColor="#E6D9FF">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
-        android:weightSum="1">
+        android:orientation="vertical"
+        android:padding="24dp"
+        android:gravity="center_horizontal"
+        android:background="#ECE0FF">
 
         <TextView
             android:id="@+id/textViewRequestDestination"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="0.6"
-            android:text="Request Destination"
+            android:text="Origin → Destination"
             android:textSize="18sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold"
+            android:textColor="#000000"
+            android:layout_marginBottom="4dp" />
 
-        <Button
-            android:id="@+id/buttonRequestAccept"
+        <TextView
+            android:id="@+id/textViewRequestDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Accept"
-            android:backgroundTint="@android:color/holo_green_light"
-            android:textColor="@android:color/white"
-            android:layout_marginStart="8dp"/>
+            android:text="Date"
+            android:textSize="14sp"
+            android:textColor="#000000"
+            android:layout_marginBottom="16dp" />
 
-        <Button
-            android:id="@+id/buttonRequestDeny"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Deny"
-            android:backgroundTint="@android:color/holo_red_light"
-            android:textColor="@android:color/white"
-            android:layout_marginStart="8dp"/>
-        <Button
-            android:id="@+id/buttonCancelRequest"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Cancel"
-            android:backgroundTint="@android:color/holo_red_light"
-            android:textColor="@android:color/white"
-            android:layout_marginTop="8dp"/>
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:weightSum="3"
+            android:layout_marginTop="8dp">
 
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/buttonRequestAccept"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Accept"
+                android:textColor="#FFFFFF"
+                app:cornerRadius="16dp"
+                app:backgroundTint="#388E3C"
+                android:layout_marginEnd="6dp"
+                android:padding="10dp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/buttonRequestDeny"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Confirm"
+                android:textColor="#FFFFFF"
+                app:cornerRadius="16dp"
+                android:layout_marginHorizontal="6dp"
+                android:padding="10dp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/buttonCancelRequest"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Cancel"
+                android:textColor="#FFFFFF"
+                app:cornerRadius="16dp"
+                app:backgroundTint="#B71C1C"
+                android:layout_marginStart="6dp"
+                android:padding="10dp" />
+        </LinearLayout>
     </LinearLayout>
-
 </androidx.cardview.widget.CardView>

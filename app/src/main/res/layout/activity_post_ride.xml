@@ -53,6 +53,12 @@
             android:backgroundTint="#9D4EDD"
             android:padding="12dp"
             android:layout_marginBottom="24dp" />
+        <Button
+            android:id="@+id/buttonPickDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Pick Date"
+            android:layout_marginBottom="16dp"/>
 
         <Button
             android:id="@+id/buttonPost"
