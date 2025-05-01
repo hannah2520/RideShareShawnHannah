@@ -1,9 +1,14 @@
 package edu.uga.cs.rideshareshawnhannah;
 
 import android.os.Bundle;
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.firebase.database.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +17,8 @@ public class RideRequestsActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private RideRequestAdapter adapter;
-    private List<String> rideRequestsList;
+    private List<RideRequest> rideRequestsList;
+    private DatabaseReference requestsRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,18 +29,32 @@ public class RideRequestsActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         rideRequestsList = new ArrayList<>();
-        // Dummy hardcoded destinations
-        rideRequestsList.add("North Campus");
-        rideRequestsList.add("South Campus");
-        rideRequestsList.add("City Center");
-        rideRequestsList.add("Train Station");
-        rideRequestsList.add("Hospital");
-        rideRequestsList.add("Concert Hall");
-        rideRequestsList.add("Amusement Park");
-        rideRequestsList.add("Old Town");
-        rideRequestsList.add("Cinema");
-
         adapter = new RideRequestAdapter(rideRequestsList);
         recyclerView.setAdapter(adapter);
+
+        requestsRef = FirebaseDatabase.getInstance().getReference("requests");
+
+        requestsRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                rideRequestsList.clear();
+                for (DataSnapshot requestSnapshot : snapshot.getChildren()) {
+                    RideRequest request = requestSnapshot.getValue(RideRequest.class);
+                    if (request != null) {
+                        rideRequestsList.add(request);
+                    }
+                }
+                adapter.notifyDataSetChanged();
+
+                if (rideRequestsList.isEmpty()) {
+                    Toast.makeText(RideRequestsActivity.this, "No ride requests found", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(RideRequestsActivity.this, "Failed to load requests", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }

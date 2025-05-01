@@ -6,14 +6,30 @@ public class RideRequest {
     private String date;
     private String notes;
 
-    // Needed for Firebase
-    public RideRequest() {}
+    private String driverUid;
+    private String riderUid;
+    private String id;
+
+    public RideRequest() {
+        // required for Firebase
+    }
 
     public RideRequest(String origin, String destination, String date, String notes) {
         this.origin = origin;
         this.destination = destination;
         this.date = date;
         this.notes = notes;
+    }
+
+    public RideRequest(String origin, String destination, String date, String notes,
+                       String driverUid, String riderUid, String id) {
+        this.origin = origin;
+        this.destination = destination;
+        this.date = date;
+        this.notes = notes;
+        this.driverUid = driverUid;
+        this.riderUid = riderUid;
+        this.id = id;
     }
 
     public String getOrigin() {
@@ -30,5 +46,29 @@ public class RideRequest {
 
     public String getNotes() {
         return notes;
+    }
+
+    public String getDriverUid() {
+        return driverUid;
+    }
+
+    public String getRiderUid() {
+        return riderUid;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setDriverUid(String driverUid) {
+        this.driverUid = driverUid;
+    }
+
+    public void setRiderUid(String riderUid) {
+        this.riderUid = riderUid;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }

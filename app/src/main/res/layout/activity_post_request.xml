@@ -8,49 +8,65 @@
     android:padding="24dp">
 
     <LinearLayout
-        android:id="@+id/formLayout"
-        android:layout_width="0dp"
+        android:id="@+id/formContainer"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
+        android:gravity="center_horizontal"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Post a Request"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="#5A189A"
+            android:layout_marginBottom="24dp" />
+
         <EditText
             android:id="@+id/editOriginRequest"
-            android:layout_width="match_parent"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:hint="Origin" />
+            android:hint="Origin"
+            android:padding="12dp"
+            android:layout_marginBottom="16dp" />
 
         <EditText
             android:id="@+id/editDestinationRequest"
-            android:layout_width="match_parent"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:hint="Destination"
-            android:layout_marginTop="16dp"/>
+            android:padding="12dp"
+            android:layout_marginBottom="16dp" />
 
         <EditText
             android:id="@+id/editDateRequest"
-            android:layout_width="match_parent"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:hint="Date"
-            android:layout_marginTop="16dp"/>
+            android:hint="Date (e.g. May 2)"
+            android:padding="12dp"
+            android:layout_marginBottom="16dp" />
 
         <EditText
             android:id="@+id/editNotesRequest"
-            android:layout_width="match_parent"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:hint="Notes (Optional)"
-            android:layout_marginTop="16dp"/>
+            android:hint="Notes (optional)"
+            android:padding="12dp"
+            android:layout_marginBottom="24dp" />
 
         <Button
             android:id="@+id/buttonPostRequest"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Post Request"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="24dp"/>
-    </LinearLayout>
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
 
+            android:padding="12dp" />
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

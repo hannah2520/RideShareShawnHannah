@@ -1,9 +1,14 @@
 package edu.uga.cs.rideshareshawnhannah;
 
 import android.os.Bundle;
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.firebase.database.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,8 +16,9 @@ import java.util.List;
 public class RideOffersActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
-    private RideOfferAdapter adapter;
-    private List<String> rideOffersList;
+    private RideAdapter adapter;
+    private List<Ride> rideOffersList;
+    private DatabaseReference ridesRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,18 +29,32 @@ public class RideOffersActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         rideOffersList = new ArrayList<>();
-        // Dummy hardcoded destinations
-        rideOffersList.add("Downtown");
-        rideOffersList.add("Airport");
-        rideOffersList.add("Mall");
-        rideOffersList.add("University");
-        rideOffersList.add("Beach");
-        rideOffersList.add("Stadium");
-        rideOffersList.add("Library");
-        rideOffersList.add("Park");
-        rideOffersList.add("Museum");
-
-        adapter = new RideOfferAdapter(rideOffersList);
+        adapter = new RideAdapter(rideOffersList);
         recyclerView.setAdapter(adapter);
+
+        ridesRef = FirebaseDatabase.getInstance().getReference("rides");
+
+        ridesRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                rideOffersList.clear();
+                for (DataSnapshot rideSnapshot : snapshot.getChildren()) {
+                    Ride ride = rideSnapshot.getValue(Ride.class);
+                    if (ride != null) {
+                        rideOffersList.add(ride);
+                    }
+                }
+                adapter.notifyDataSetChanged();
+
+                if (rideOffersList.isEmpty()) {
+                    Toast.makeText(RideOffersActivity.this, "No ride offers available", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(RideOffersActivity.this, "Failed to load ride offers", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }
